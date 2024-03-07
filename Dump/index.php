@@ -33,6 +33,22 @@
         <div class="arrow-icon">↓</div>
 
     </div>
+
+
+
+    <div class="quick-link">
+        <span class="ql-heading">Quick Links</span>
+
+        <div class="quick-links">
+            <a href="" class="links">Quick Introduction</a>
+            <a href="" class="links">Goal</a>
+            <a href="" class="links">Progress</a>
+            <a href="" class="links">Data Visualization</a>
+            <a href="" class="links">Model1</a>
+            <a href="" class="links">Model2</a>
+        </div>
+
+    </div>
     
     
 </body>
