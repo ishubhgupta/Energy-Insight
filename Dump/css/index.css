@@ -1,35 +1,31 @@
 body {
-    background-color: #182527;
+    /* background-color: #182527; */
     color: #ffffff;
     font-family: "Nunito", sans-serif;
     font-optical-sizing: auto;
     font-weight: 200;
-    font-style: normal;
-    text-align: center;
+    /* font-style: normal; */
+    /* text-align: center; */
 }
 
 header.navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 10px; 
+    padding: 10px; 
     position: fixed; 
     width: 100%; 
-    top: 0;
     height: 5vh;
-    right: 0px;
-    left: 0px;
 
 }
 
 .navbar h1 {
     font-size: 24px;
-    margin: 0;
 }
 
 .left-nav {
     float: left; 
-    
+
 }
 
 nav.right-nav {
@@ -46,12 +42,12 @@ nav.right-nav a {
 
 
 .main-content {
-    margin-top: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 90vh; 
+    width: 100%;
     background-color: #182527;
 }
 
@@ -96,7 +92,6 @@ nav.right-nav a {
 
 .quick-link {
     text-align: center;
-    margin-top: 50px; /* Adjust the top margin as needed */
     height: 100vh;
     width: 100%;
     background-color: #20cd8d;
@@ -133,6 +128,8 @@ nav.right-nav a {
     display: inline-block;
     font-size: 16px;
 }
+
+
 .links:hover{
     width: 305px;
     height: 25px;
