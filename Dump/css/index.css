@@ -1,8 +1,12 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    /* background-color: #182527; */
     color: #ffffff;
     font-family: "Nunito", sans-serif;
-    font-optical-sizing: auto;
     font-weight: 200;
     font-style: normal; 
     text-align: center;
@@ -15,31 +19,28 @@ header.navbar {
     padding: 10px; 
     position: fixed; 
     width: 100%; 
-
 }
 
 .navbar h1 {
-    font-size: 24px;
+    font-size: 2vw; 
 }
 
 .left-nav {
     float: left; 
-
 }
 
 nav.right-nav {
     float: right; 
-    margin-right: 15px;
+    /* margin-right: 1.5vw; */
 }
 
 nav.right-nav a {
-    margin: 0 15px; 
+    margin: 0 1.5vw; 
     text-decoration: none;
     color: white; 
     font-weight: bold;
-    font-size: 20px;
+    font-size: 2vw; 
 }
-
 
 .main-content {
     display: flex;
@@ -50,26 +51,26 @@ nav.right-nav a {
     background-color: #182527;
 }
 
-.prj-name{
+.prj-name {
     border-left: 3px solid #20CD8D;
     border-radius: 2px;
-    padding-left: 20px;
-    font-size: 32px;
+    padding-left: 2vw; 
+    font-size: 2.5vw; 
     position: relative;
-    top: -20px;
-    left: -10px;
+    top: -1vw;
+    left: -0.5vw;
 }
 
 .main-heading {
-    font-size: 64px;
+    font-size: 5vw;
     font-weight: bold;
-    margin-top: 20px; 
+    margin-top: 2vw; 
     color: #20CD8D;
 }
 
 .subheading {
-    font-size: 22px;
-    margin-top: 10px;
+    font-size: 1.5vw; 
+    margin-top: 1vw;
 }
 
 .btn-learn-more {
@@ -77,18 +78,21 @@ nav.right-nav a {
     color: #ffffff;
     border: none;
     width: 20%;
-    border-radius: 25px;
-    padding: 10px 20px;
-    font-size: 24px;
+    border-radius: 2.5vw; 
+    padding: 1vw 2vw; 
+    font-size: 2vw; 
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 2vw;
 }
 
 .arrow-icon {
-    font-size: 24px;
-    margin-top: 10px;
+    font-size: 2vw; 
+    margin-top: 1vw;
 }
 
+.arrow-icon:hover{
+    font-size: 30px;
+}
 
 .quick-link {
     text-align: center;
@@ -98,10 +102,10 @@ nav.right-nav a {
 }
 
 .ql-heading {
-    font-size: 30px;
+    font-size: 2.5vw;
     font-weight: bold;
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 1vw;
     position: relative;
     top: 10vh;
 }
@@ -111,43 +115,47 @@ nav.right-nav a {
     top: 20vh;
     display: grid;
     font-weight: bold;
-    gap: 10px;
+    gap: 1vw; 
     justify-content: center;
     justify-items: center;
     align-content: center;
 }
 
 .links {
-    margin: 5px;
-    padding: 10px;
+    margin: 0.5vw;
     background-color: #ffffff;
-    width: 300px;
+    width: 30vw;
     color: black;
     text-decoration: none;
-    border-radius: 25px;
-    display: inline-block;
-    font-size: 16px;
+    border-radius: 2.5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6vw;
+    height: 3vw;
+}
+
+.links:hover {
+    width: 31vw;
+    height: 4vw;
 }
 
 
-.links:hover{
-    width: 305px;
-    height: 25px;
-}
 
 /* Additional CSS to adjust link positions */
 .links:nth-child(1),
 .links:nth-child(4) {
-    grid-column: span 3; /* Span full width for the first and fourth links */
+    grid-column: span 3; 
 }
 
 .links:nth-child(2),
 .links:nth-child(3),
 .links:nth-child(5),
 .links:nth-child(6) {
-    grid-column: span 1; /* Span one column for the second, third, fifth, and sixth links */
+    grid-column: span 1;
 }
 
 .links:nth-child(3) {
     justify-self: center;
 }
+

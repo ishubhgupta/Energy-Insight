@@ -7,10 +7,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <script src="js/index.js"></script>
     <title>EnergyInsight</title>
 </head>
+
 <body>
-    <main>
     <header class="navbar">
         <div class="left-nav">EnergyInsight</div>
         <nav class="right-nav">
@@ -30,26 +31,22 @@
             You Make, We Save.
         </div>
         <button class="btn-learn-more">Learn More</button>
-        <div class="arrow-icon">↓</div>
-
+        <div class="arrow-icon" onclick="scrollToQuickLink()">↓</div>
     </div>
 
-
-
-    <div class="quick-link">
+    <div class="quick-link" id="quick-link">
         <span class="ql-heading">Quick Links</span>
 
         <div class="quick-links">
-            <a href="" class="links">Quick Introduction</a>
-            <a href="" class="links">Goal</a>
-            <a href="" class="links">Progress</a>
-            <a href="" class="links">Data Visualization</a>
-            <a href="" class="links">Model1</a>
-            <a href="" class="links">Model2</a>
+            <a href="#intro" class="links">Quick Introduction</a>
+            <a href="#goal" class="links">Goal</a>
+            <a href="#progress" class="links">Progress</a>
+            <a href="#visualization" class="links">Data Visualization</a>
+            <a href="#model1" class="links">Model1</a>
+            <a href="#model2" class="links">Model2</a>
         </div>
-
     </div>
-    
+
     
 </body>
 </html>
