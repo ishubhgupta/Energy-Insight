@@ -47,6 +47,18 @@
         </div>
     </div>
 
-    
+    <div class="contact">
+        <span class="contact-heading">Contact Details</span>
+        <div class="contact-animation">
+
+        </div>
+        <div class="contact-options">
+            <span class="items">87379767XX</span>
+            <span class="items">VIT Bhopal University</span>
+            <span class="items">EnergyInsight@gmail.com</span>
+            <span class="items">EnergyInsight.com</span>
+        </div>
+    </div>
+  
 </body>
 </html>

@@ -159,3 +159,39 @@ nav.right-nav a {
     justify-self: center;
 }
 
+
+/* contact */
+
+.contact {
+    height: 100vh;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Align content horizontally at the center */
+}
+
+.contact-heading {
+    font-weight: bold;
+    font-size: 36px;
+    color: #182527;
+    margin-top: 10vh;
+}
+
+.contact-options {
+    margin-top: 5vh; /* Adjust the top margin as needed */
+    position: relative;
+    width: 90%;
+    top: 60vh;
+    display: flex;
+    align-items: center; /* Align content horizontally at the center */
+    gap: 3vh; /* Adjust the vertical gap between items */
+}
+
+.items {
+    background-color: #182527;
+    border-radius: 20px;
+    padding: 10px 20px;
+    width: 100%; /* Make each item take up the full width of the container */
+    text-align: center; /* Center the text within each item */
+    font-weight: bold;
+}
