@@ -35,38 +35,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $Windspeed = $_POST['Windspeed'];
     $Visibility = $_POST['Visibility'];
     $Tdewpoint = $_POST['Tdewpoint'];
-    $rv1 = $_POST['rv1'];
-    $rv2 = $_POST['rv2'];
     $NSM = $_POST['NSM'];
 
-    // Prepare the command to run the Python script with user inputs
-    $command = "python -u d:/Projects/Energy-Insight/Dump/appliances.py";
+// Prepare the command to run the Python script with user inputs
+$command = "python -u D:/Projects/Energy-Insight/Dump/appliances.py";
 
-    // Append user inputs to the command
-    $command .= " \"$lights\" \"$T1\" \"$RH_1\" \"$T2\" \"$RH_2\" \"$T3\" \"$RH_3\" \"$T4\" \"$RH_4\" \"$T5\" \"$RH_5\" \"$T6\" \"$RH_6\" \"$T7\" \"$RH_7\" \"$T8\" \"$RH_8\" \"$T9\" \"$RH_9\" \"$T_out\" \"$Press_mm_hg\" \"$RH_out\" \"$Windspeed\" \"$Visibility\" \"$Tdewpoint\" \"$rv1\" \"$rv2\" \"$NSM\"";
+// Append user inputs to the command
+$command .= " " . escapeshellarg($lights) . " " . escapeshellarg($T1) . " " . escapeshellarg($RH_1) . " " . escapeshellarg($T2) . " " . escapeshellarg($RH_2) . " " . escapeshellarg($T3) . " " . escapeshellarg($RH_3) . " " . escapeshellarg($T4) . " " . escapeshellarg($RH_4) . " " . escapeshellarg($T5) . " " . escapeshellarg($RH_5) . " " . escapeshellarg($T6) . " " . escapeshellarg($RH_6) . " " . escapeshellarg($T7) . " " . escapeshellarg($RH_7) . " " . escapeshellarg($T8) . " " . escapeshellarg($RH_8) . " " . escapeshellarg($T9) . " " . escapeshellarg($RH_9) . " " . escapeshellarg($T_out) . " " . escapeshellarg($Press_mm_hg) . " " . escapeshellarg($RH_out) . " " . escapeshellarg($Windspeed) . " " . escapeshellarg($Visibility) . " " . escapeshellarg($Tdewpoint) . " " . escapeshellarg($NSM);
 
-    // Execute the command and get the result
-    $result = shell_exec($command);
+// Execute the command and capture the output
+$output = shell_exec($command);
 
-    // Display the result
-    echo "<p>The predicted Appliances value is: $result</p>";
+// Display the result
+echo "<p>The predicted Appliances value is: $output</p>";
+
 }
 ?>
 
 <!-- HTML form to take user inputs -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Appliances Prediction</title>
-</head>
-<body>
-
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-
-
-    <label for="lights">Lights:</label>
+<label for="lights">Lights:</label>
     <input type="text" name="lights" required><br>
 
     <label for="T1">Temperature in kitchen area (T1):</label>
@@ -141,16 +129,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <label for="Tdewpoint">Dewpoint Temperature (from Chièvres weather station) (Tdewpoint):</label>
     <input type="text" name="Tdewpoint" required><br>
 
-    <label for="rv1">Random variable 1, nondimensional (rv1):</label>
-    <input type="text" name="rv1" required><br>
-
-    <label for="rv2">Random variable 2, nondimensional (rv2):</label>
-    <input type="text" name="rv2" required><br>
 
     <label for="NSM">NSM Value:</label>
     <input type="text" name="NSM" required><br>
 
     <input type="submit" value="Predict">
+
 </form>
 
 </body>

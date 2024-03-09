@@ -32,28 +32,32 @@ def predict_appliances(lights, T1, RH_1, T2, RH_2, T3, RH_3, T4, RH_4, T5, RH_5,
         Visibility = float(Visibility)
         Tdewpoint = float(Tdewpoint)
         NSM = float(NSM)
-    except ValueError:
-        print("Please enter numerical values for features.")
+    except ValueError as e:
+        print(f"Error converting input values: {e}")
         return
 
-    # Create a dictionary with the user-input data
-    new_data = {'lights': [lights], 'T1': [T1], 'RH_1': [RH_1], 'T2': [T2], 'RH_2': [RH_2],
-                'T3': [T3], 'RH_3': [RH_3], 'T4': [T4], 'RH_4': [RH_4], 'T5': [T5], 'RH_5': [RH_5],
-                'T6': [T6], 'RH_6': [RH_6], 'T7': [T7], 'RH_7': [RH_7], 'T8': [T8], 'RH_8': [RH_8],
-                'T9': [T9], 'RH_9': [RH_9], 'T_out': [T_out], 'Press_mm_hg': [Press_mm_hg], 'RH_out': [RH_out],
-                'Windspeed': [Windspeed], 'Visibility': [Visibility], 'Tdewpoint': [Tdewpoint],
-                'NSM': [NSM]}
+    try:
+        # Create a dictionary with the user-input data
+        new_data = {'lights': [lights], 'T1': [T1], 'RH_1': [RH_1], 'T2': [T2], 'RH_2': [RH_2],
+                    'T3': [T3], 'RH_3': [RH_3], 'T4': [T4], 'RH_4': [RH_4], 'T5': [T5], 'RH_5': [RH_5],
+                    'T6': [T6], 'RH_6': [RH_6], 'T7': [T7], 'RH_7': [RH_7], 'T8': [T8], 'RH_8': [RH_8],
+                    'T9': [T9], 'RH_9': [RH_9], 'T_out': [T_out], 'Press_mm_hg': [Press_mm_hg], 'RH_out': [RH_out],
+                    'Windspeed': [Windspeed], 'Visibility': [Visibility], 'Tdewpoint': [Tdewpoint],
+                    'NSM': [NSM]}
 
-    # Create a DataFrame with the new data
-    new_data_df = pd.DataFrame(data=new_data)
+        # Create a DataFrame with the new data
+        new_data_df = pd.DataFrame(data=new_data)
 
-    # Load the pre-trained model
-    clf = joblib.load(r'Dump\main\appliances.joblib')
+        # Load the pre-trained model
+        clf = joblib.load(r'D:\Projects\Energy-Insight\Dump\main\appliances.joblib')
 
-    # Make predictions using the trained model
-    prediction = clf.predict(new_data_df)
+        # Make predictions using the trained model
+        prediction = clf.predict(new_data_df)
 
-    print(f"The predicted Appliances value is: {prediction[0]}")
+        print(f"The predicted Appliances value is: {prediction[0]}")
+
+    except Exception as e:
+        print(f"Error during prediction: {e}")
 
 # Check if the script is being run from the command line
 if __name__ == "__main__":
@@ -64,7 +68,7 @@ if __name__ == "__main__":
     print(f"Received arguments: {args}")
 
     # Check if the correct number of arguments is provided
-    if len(args) != 25:
+    if len(args) != 26:
         print("Incorrect number of arguments. Please provide values for all features.")
     else:
         # Call the predict_appliances function with the provided arguments
