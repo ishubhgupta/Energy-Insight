@@ -3,38 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/heatcoolLoad.css">
     <title>Heat Cool Load Prediction</title>
 </head>
 <body>
     <h1>Heat Cool Load Prediction</h1>
 
-    <form action="" method="post">
-        <label for="X1">X1 Relative Compactness:</label>
-        <input type="text" name="X1" required><br>
+    <form action="" method="post" id="predictionForm">
+        <div class="form-group">
+            <label for="X1">X1 Relative Compactness:</label>
+            <input type="text" name="X1" required><br>
+        </div>
 
-        <label for="X2">X2 Surface Area:</label>
-        <input type="text" name="X2" required><br>
+        <div class="form-group">
+            <label for="X2">X2 Surface Area:</label>
+            <input type="text" name="X2" required><br>
+        </div>
 
-        <label for="X3">X3 Wall Area:</label>
-        <input type="text" name="X3" required><br>
+        <div class="form-group">
+            <label for="X3">X3 Wall Area:</label>
+            <input type="text" name="X3" required><br>
+        </div>
 
-        <label for="X4">X4 Roof Area:</label>
-        <input type="text" name="X4" required><br>
+        <div class="form-group">
+            <label for="X4">X4 Roof Area:</label>
+            <input type="text" name="X4" required><br>
+        </div>
 
-        <label for="X5">X5 Overall Height:</label>
-        <input type="text" name="X5" required><br>
+        <div class="form-group">
+            <label for="X5">X5 Overall Height:</label>
+            <input type="text" name="X5" required><br>
+        </div>
 
-        <label for="X6">X6 Orientation:</label>
-        <input type="text" name="X6" required><br>
+        <div class="form-group">
+            <label for="X6">X6 Orientation:</label>
+            <input type="text" name="X6" required><br>
+        </div>
 
-        <label for="X7">X7 Glazing Area:</label>
-        <input type="text" name="X7" required><br>
+        <div class="form-group">
+            <label for="X7">X7 Glazing Area:</label>
+            <input type="text" name="X7" required><br>
+        </div>
 
-        <label for="X8">X8 Glazing Area Distribution:</label>
-        <input type="text" name="X8" required><br>
+        <div class="form-group">
+            <label for="X8">X8 Glazing Area Distribution:</label>
+            <input type="text" name="X8" required><br>
+        </div>
 
         <input type="submit" value="Predict">
     </form>
+
+    <div id="resultContainer"></div>
+
+    <script src="js/heatload.js"></script>
 
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -49,7 +70,7 @@
         $X8 = $_POST["X8"];
 
         // Prepare the command to run the Python script with user inputs
-        $command = "python -u D:\Projects\Energy-Insight\Dump\heatCoolLoad.py";
+        $command = "python -u D:\\Projects\\Energy-Insight\\Dump\\heatCoolLoad.py";
         
         // Append user inputs to the command
         $command .= " " . escapeshellarg($X1) . " " . escapeshellarg($X2) . " " . escapeshellarg($X3) . " " . escapeshellarg($X4) . " " . escapeshellarg($X5) . " " . escapeshellarg($X6) . " " . escapeshellarg($X7) . " " . escapeshellarg($X8);
