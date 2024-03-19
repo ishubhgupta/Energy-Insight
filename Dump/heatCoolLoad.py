@@ -44,8 +44,8 @@ if __name__ == "__main__":
     # Read command-line arguments
     args_heat_cool = sys.argv[1:]
 
-    # Display command-line arguments for debugging
-    print(f"Received arguments: {args_heat_cool}")
+    
+    # print(f"Received arguments: {args_heat_cool}") # Display command-line arguments for debugging
 
     # Check if the correct number of arguments is provided
     if len(args_heat_cool) != 8:
