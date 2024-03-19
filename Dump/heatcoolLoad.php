@@ -9,7 +9,8 @@
 <body>
     <h1>Heat Cool Load Prediction</h1>
 
-    <form action="" method="post" id="predictionForm">
+    <!-- HTML form to take user inputs -->
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" id="predictionForm">
         <div class="form-group">
             <label for="X1">X1 Relative Compactness:</label>
             <input type="text" name="X1" required><br>
@@ -55,8 +56,6 @@
 
     <div id="resultContainer"></div>
 
-    <script src="js/heatload.js"></script>
-
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Get user input from the form
@@ -79,7 +78,7 @@
         $output = shell_exec($command);
 
         // Display the result
-        echo "<p>The predicted Heating Load and Cooling Load values are: $output</p>";
+        echo "<p>$output</p>";
     }
     ?>
 </body>
