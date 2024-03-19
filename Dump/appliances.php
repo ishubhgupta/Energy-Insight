@@ -53,6 +53,7 @@ echo "<p>The predicted Appliances value is: $output</p>";
 ?>
 
 <!-- HTML form to take user inputs -->
+<h1>welcome</h1>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 <label for="lights">Lights:</label>
     <input type="text" name="lights" required><br>
