@@ -1,36 +1,53 @@
 document.addEventListener("DOMContentLoaded", function() {
-    var formQuestions = document.querySelectorAll('.form-group');
-    var currentIndex = 0;
+    const questions = document.querySelectorAll(".question");
+    const nextBtns = document.querySelectorAll(".next-btn");
+    const prevBtn = document.getElementById("prev-btn");
+    const predictBtn = document.getElementById("predict-btn");
 
-    function showQuestion(index) {
-        formQuestions.forEach(function(question, i) {
-            question.style.display = (i === index) ? 'block' : 'none';
-        });
-    }
+    let currentQuestionIndex = 0;
 
-    document.getElementById("predictionForm").addEventListener("submit", function(event) {
-        event.preventDefault();
-
-        // Get form data
-        var formData = new FormData(this);
-
-        // Prepare the command to run the Python script with user inputs
-        var command = "python -u D:\\Projects\\Energy-Insight\\Dump\\heatCoolLoad.py";
-
-        // Append user inputs to the command
-        for (var pair of formData.entries()) {
-            command += " " + escapeshellarg(pair[1]);
+    // Show next question and hide current one
+    function showNextQuestion() {
+        questions[currentQuestionIndex].classList.add("hidden");
+        currentQuestionIndex++;
+        if (currentQuestionIndex < questions.length) {
+            questions[currentQuestionIndex].classList.remove("hidden");
         }
 
-        // Execute the command and capture the output
-        var output = shell_exec(command);
+        if (currentQuestionIndex === questions.length - 1) {
+            predictBtn.classList.remove("hidden");
+        }
 
-        // Display the result
-        document.getElementById("resultContainer").innerHTML = "<p>The predicted Heating Load and Cooling Load values are: " + output + "</p>";
+        prevBtn.classList.remove("hidden");
+    }
+
+    // Show previous question and hide current one
+    function showPrevQuestion() {
+        questions[currentQuestionIndex].classList.add("hidden");
+        currentQuestionIndex--;
+        questions[currentQuestionIndex].classList.remove("hidden");
+
+        if (currentQuestionIndex === 0) {
+            prevBtn.classList.add("hidden");
+        }
+
+        predictBtn.classList.add("hidden");
+    }
+
+    // Event listeners for next button clicks
+    nextBtns.forEach(btn => {
+        btn.addEventListener("click", showNextQuestion);
     });
 
-    function escapeshellarg(arg) {
-        // Implement your own logic for escaping shell arguments if needed
-        return arg;
-    }
+    // Event listener for previous button click
+    prevBtn.addEventListener("click", showPrevQuestion);
+
+    // Event listener for input changes
+    const inputs = document.querySelectorAll(".question input");
+    inputs.forEach(input => {
+        input.addEventListener("input", function() {
+            const allFilled = Array.from(inputs).every(input => input.value !== "");
+            predictBtn.disabled = !allFilled;
+        });
+    });
 });
