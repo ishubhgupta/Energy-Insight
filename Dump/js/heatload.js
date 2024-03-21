@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     const questions = document.querySelectorAll(".question");
     const nextBtns = document.querySelectorAll(".next-btn");
-    const prevBtn = document.getElementById("prev-btn");
+    const prevBtns = document.querySelectorAll(".prev-btn");
     const predictBtn = document.getElementById("predict-btn");
 
     let currentQuestionIndex = 0;
@@ -16,9 +16,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if (currentQuestionIndex === questions.length - 1) {
             predictBtn.classList.remove("hidden");
+            nextBtns[currentQuestionIndex].classList.add("hidden");
         }
 
-        prevBtn.classList.remove("hidden");
+        prevBtns[currentQuestionIndex].classList.remove("hidden");
     }
 
     // Show previous question and hide current one
@@ -28,19 +29,22 @@ document.addEventListener("DOMContentLoaded", function() {
         questions[currentQuestionIndex].classList.remove("hidden");
 
         if (currentQuestionIndex === 0) {
-            prevBtn.classList.add("hidden");
+            prevBtns[currentQuestionIndex].classList.add("hidden");
         }
 
         predictBtn.classList.add("hidden");
+        nextBtns[currentQuestionIndex].classList.remove("hidden");
     }
 
     // Event listeners for next button clicks
-    nextBtns.forEach(btn => {
+    nextBtns.forEach((btn, index) => {
         btn.addEventListener("click", showNextQuestion);
     });
 
     // Event listener for previous button click
-    prevBtn.addEventListener("click", showPrevQuestion);
+    prevBtns.forEach((btn, index) => {
+        btn.addEventListener("click", showPrevQuestion);
+    });
 
     // Event listener for input changes
     const inputs = document.querySelectorAll(".question input");
