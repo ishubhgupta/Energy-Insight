@@ -1,3 +1,4 @@
+
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get user input from the form
@@ -26,8 +27,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/heatcoolLoad.css">
     <title>Heat Cool Load Prediction</title>
+    <link rel="stylesheet" href="css/heatcoolLoad.css">
 </head>
 <body>
     <header>
@@ -35,63 +36,71 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </header>
 
     <main>
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" id="predictionForm">
-            <div class="question" id="question1">
-                <label for="X1">X1 Relative Compactness:</label>
-                <input type="number" name="X1" step="0.01" min="0" required>
-                <button type="button" id="next-btn" class="next-btn">Next</button>
+        <div class="container">
+            <div class="form">
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" id="predictionForm">
+
+                    <div class="question" id="question1">
+                        <label for="X1">X1 Relative Compactness:</label>
+                        <input type="number" name="X1" step="0.01" min="0" required>
+                        <button type="button" id="next-btn" class="next-btn">Next</button>
 
 
-            </div>
-            <div class="question hidden" id="question2">
-                <label for="X2">X2 Surface Area:</label>
-                <input type="number" name="X2" step="0.02" min="0" required>
-                <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
-                <button type="button" id="next-btn" class="next-btn">Next</button>
+                    </div>
+                    <div class="question hidden" id="question2">
+                        <label for="X2">X2 Surface Area:</label>
+                        <input type="number" name="X2" step="0.02" min="0" required>
+                        <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
+                        <button type="button" id="next-btn" class="next-btn">Next</button>
 
 
+                    </div>
+                    <div class="question hidden" id="question3">
+                        <label for="X3">X3 Wall Area:</label>
+                        <input type="number" name="X3" step="0.01" min="0" required>
+                        <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
+                        <button type="button" id="next-btn" class="next-btn">Next</button>
+                    </div>
+                    <div class="question hidden" id="question4">
+                        <label for="X4">X4 Roof Area:</label>
+                        <input type="number" name="X4" step="0.01" min="0" required>
+                        <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
+                        <button type="button" id="next-btn" class="next-btn">Next</button>
+                    </div>
+                    <div class="question hidden" id="question5">
+                        <label for="X5">X5 Overall Height:</label>
+                        <input type="number" name="X5" step="0.01" min="0" required>
+                        <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
+                        <button type="button" id="next-btn" class="next-btn">Next</button>
+                    </div>
+                    <div class="question hidden" id="question6">
+                        <label for="X6">X6 Orientation:</label>
+                        <input type="number" name="X6" step="0.01" min="0" required>
+                        <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
+                        <button type="button" id="next-btn" class="next-btn">Next</button>
+                    </div>
+                    <div class="question hidden" id="question7">
+                        <label for="X7">X7 Glazing Area:</label>
+                        <input type="number" name="X7" step="0.01" min="0" required>
+                        <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
+                        <button type="button" id="next-btn" class="next-btn">Next</button>
+                    </div>
+                    <div class="question hidden" id="question8">
+                        <label for="X8">X8 Glazing Area Distribution:</label>
+                        <input type="number" name="X8" step="0.01" min="0" required>
+                        <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
+                        <!-- <button type="submit" id="predict-btn" class="hidden">Predict</button> -->
+                    </div>
+                    <button type="submit" id="predict-btn" class="pred-btn" disabled>Predict</button>
+                </form>
             </div>
-            <div class="question hidden" id="question3">
-                <label for="X3">X3 Wall Area:</label>
-                <input type="number" name="X3" step="0.01" min="0" required>
-                <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
-                <button type="button" id="next-btn" class="next-btn">Next</button>
-            </div>
-            <div class="question hidden" id="question4">
-                <label for="X4">X4 Roof Area:</label>
-                <input type="number" name="X4" step="0.01" min="0" required>
-                <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
-                <button type="button" id="next-btn" class="next-btn">Next</button>
-            </div>
-            <div class="question hidden" id="question5">
-                <label for="X5">X5 Overall Height:</label>
-                <input type="number" name="X5" step="0.01" min="0" required>
-                <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
-                <button type="button" id="next-btn" class="next-btn">Next</button>
-            </div>
-            <div class="question hidden" id="question6">
-                <label for="X6">X6 Orientation:</label>
-                <input type="number" name="X6" step="0.01" min="0" required>
-                <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
-                <button type="button" id="next-btn" class="next-btn">Next</button>
-            </div>
-            <div class="question hidden" id="question7">
-                <label for="X7">X7 Glazing Area:</label>
-                <input type="number" name="X7" step="0.01" min="0" required>
-                <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
-                <button type="button" id="next-btn" class="next-btn">Next</button>
-            </div>
-            <div class="question hidden" id="question8">
-                <label for="X8">X8 Glazing Area Distribution:</label>
-                <input type="number" name="X8" step="0.01" min="0" required>
-                <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
-                <button type="submit" id="predict-btn" class="hidden">Predict</button>
-                
-            </div>
-            <button type="submit" id="predict-btn" class="hidden" disabled>Predict</button>
-        </form>
 
-        <div id="resultContainer">
+            <div class="data-representation">
+                <div id="cube"></div>
+            </div>
+        </div>
+
+        <div id="resultContainer" class="result-container">
             <?php if(isset($output)) echo "<p>$output</p>"; ?>
         </div>
     </main>
@@ -99,3 +108,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="js/heatload.js"></script>
 </body>
 </html>
+
