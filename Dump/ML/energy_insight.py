@@ -95,7 +95,7 @@ def suggestion(pmp):
 
 # feature engineering
 
-df = pd.read_csv("ENB2012_data.csv")
+df = pd.read_csv("Dump\ML\ENB2012_data.csv")
 # new feature
 df['X9'] = (df['X3']/4)/df['X5']
 df['X10'] = 2 * (df['X5'] + df['X9'])
