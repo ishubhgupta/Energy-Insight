@@ -31,6 +31,64 @@ header h1 {
     margin: 0;
 }
 
+
+/* CSS for the Material Design Icons */
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;  /* Adjust size as needed */
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    /* -webkit-font-feature-settings: 'liga'; */
+    -webkit-font-smoothing: antialiased;
+}
+
+.question {
+    position: relative;
+}
+
+.info-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    color: blue; /* Change color as needed */
+}
+
+/* Additional CSS for the definition tooltip */
+.info-tooltip {
+    position: absolute;
+    top: -30px;
+    right: 0;
+    background-color: #f9f9f9;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    z-index: 1;
+    display: none;
+    width: 200px; /* Adjust width as needed */
+    text-align: left; /* Align text to the left */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+.question:hover .info-tooltip {
+    display: block;
+}
+
+/* Style the text inside the tooltip */
+.info-tooltip p {
+    margin: 0; /* Remove default margin */
+    font-size: 14px; /* Adjust font size as needed */
+    color: #333; /* Text color */
+}
+
+
 .question {
     background-color: #fff;
     padding: 20px;

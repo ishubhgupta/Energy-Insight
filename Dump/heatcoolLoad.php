@@ -29,6 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Heat Cool Load Prediction</title>
     <link rel="stylesheet" href="css/heatcoolLoad.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -41,12 +42,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" id="predictionForm">
 
                     <div class="question" id="question1">
+                        <!-- Info icon -->
+                        <div class="info-icon material-icons" title="Definition for X1">info</div>
                         <label for="X1">X1 Relative Compactness:</label>
                         <input type="number" name="X1" step="0.01" min="0" required>
-                        <button type="button" id="next-btn" class="next-btn">Next</button>
-
-
+                        <button type="button" class="next-btn">Next</button>
                     </div>
+                    
                     <div class="question hidden" id="question2">
                         <label for="X2">X2 Surface Area:</label>
                         <input type="number" name="X2" step="0.02" min="0" required>
