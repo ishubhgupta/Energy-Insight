@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/appliances.css">
     <title>Appliances Prediction</title>
 </head>
 <body>
@@ -47,96 +48,170 @@ $command .= " " . escapeshellarg($lights) . " " . escapeshellarg($T1) . " " . es
 $output = shell_exec($command);
 
 // Display the result
-echo "<p>The predicted Appliances value is: $output</p>";
+// echo "<p>The predicted Appliances value is: $output</p>";
 
 }
 ?>
 
-<!-- HTML form to take user inputs -->
-<h1>welcome</h1>
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-<label for="lights">Lights:</label>
-    <input type="text" name="lights" required><br>
 
-    <label for="T1">Temperature in kitchen area (T1):</label>
-    <input type="text" name="T1" required><br>
+    <header>
+        <h1>Appliance Energy Prediction</h1>
+    </header>
 
-    <label for="RH_1">Humidity in kitchen area (RH_1):</label>
-    <input type="text" name="RH_1" required><br>
+    <main>
+        <div class="container">
+            <div class="form">
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" id="predictionForm">
 
-    <label for="T2">Temperature in living room area (T2):</label>
-    <input type="text" name="T2" required><br>
-
-    <label for="RH_2">Humidity in living room area (RH_2):</label>
-    <input type="text" name="RH_2" required><br>
-
-    <label for="T3">Temperature in laundry room area (T3):</label>
-    <input type="text" name="T3" required><br>
-
-    <label for="RH_3">Humidity in laundry room area (RH_3):</label>
-    <input type="text" name="RH_3" required><br>
-
-    <label for="T4">Temperature in office room (T4):</label>
-    <input type="text" name="T4" required><br>
-
-    <label for="RH_4">Humidity in office room (RH_4):</label>
-    <input type="text" name="RH_4" required><br>
-
-    <label for="T5">Temperature in bathroom (T5):</label>
-    <input type="text" name="T5" required><br>
-
-    <label for="RH_5">Humidity in bathroom (RH_5):</label>
-    <input type="text" name="RH_5" required><br>
-
-    <label for="T6">Temperature outside the building (north side) (T6):</label>
-    <input type="text" name="T6" required><br>
-
-    <label for="RH_6">Humidity outside the building (north side) (RH_6):</label>
-    <input type="text" name="RH_6" required><br>
-
-    <label for="T7">Temperature in ironing room (T7):</label>
-    <input type="text" name="T7" required><br>
-
-    <label for="RH_7">Humidity in ironing room (RH_7):</label>
-    <input type="text" name="RH_7" required><br>
-
-    <label for="T8">Temperature in teenager room 2 (T8):</label>
-    <input type="text" name="T8" required><br>
-
-    <label for="RH_8">Humidity in teenager room 2 (RH_8):</label>
-    <input type="text" name="RH_8" required><br>
-
-    <label for="T9">Temperature in parents' room (T9):</label>
-    <input type="text" name="T9" required><br>
-
-    <label for="RH_9">Humidity in parents' room (RH_9):</label>
-    <input type="text" name="RH_9" required><br>
-
-    <label for="T_out">Temperature outside (from Chièvres weather station) (T_out):</label>
-    <input type="text" name="T_out" required><br>
-
-    <label for="Press_mm_hg">Pressure (from Chièvres weather station) (Press_mm_hg):</label>
-    <input type="text" name="Press_mm_hg" required><br>
-
-    <label for="RH_out">Humidity outside (from Chièvres weather station) (RH_out):</label>
-    <input type="text" name="RH_out" required><br>
-
-    <label for="Windspeed">Windspeed (from Chièvres weather station) (Windspeed):</label>
-    <input type="text" name="Windspeed" required><br>
-
-    <label for="Visibility">Visibility (from Chièvres weather station) (Visibility):</label>
-    <input type="text" name="Visibility" required><br>
-
-    <label for="Tdewpoint">Dewpoint Temperature (from Chièvres weather station) (Tdewpoint):</label>
-    <input type="text" name="Tdewpoint" required><br>
+                    <div class="question" id="question1">
+                        <label for="lights">Lights:</label>
+                        <input type="text" name="lights" step="0.01" min="0" required><br>
+                        <button type="button" id="next-btn" class="next-btn">Next</button>
 
 
-    <label for="NSM">NSM Value:</label>
-    <input type="text" name="NSM" required><br>
+                    </div>
+                    <div class="question hidden" id="question2">
+                        <label for="T1">Temperature in kitchen area (T1):</label>
+                        <input type="text" name="T1" required><br>
 
-    <input type="submit" value="Predict">
+                        <label for="RH_1">Humidity in kitchen area (RH_1):</label>
+                        <input type="text" name="RH_1" required><br>
 
-</form>
+                        <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
+                        <button type="button" id="next-btn" class="next-btn">Next</button>
+                        
 
+                    </div>
+                    <div class="question hidden" id="question3">
+                        <label for="T2">Temperature in living room area (T2):</label>
+                        <input type="text" name="T2" required><br>
+
+                        <label for="RH_2">Humidity in living room area (RH_2):</label>
+                        <input type="text" name="RH_2" required><br>
+                        <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
+                        <button type="button" id="next-btn" class="next-btn">Next</button>
+                    </div>
+                    <div class="question hidden" id="question4">
+                        <label for="T3">Temperature in laundry room area (T3):</label>
+                        <input type="text" name="T3" required><br>
+
+                        <label for="RH_3">Humidity in laundry room area (RH_3):</label>
+                        <input type="text" name="RH_3" required><br>
+
+                        <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
+                        <button type="button" id="next-btn" class="next-btn">Next</button>
+                    </div>
+                    <div class="question hidden" id="question5">
+                        <label for="T4">Temperature in office room (T4):</label>
+                        <input type="text" name="T4" required><br>
+
+                        <label for="RH_4">Humidity in office room (RH_4):</label>
+                        <input type="text" name="RH_4" required><br>
+                        <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
+                        <button type="button" id="next-btn" class="next-btn">Next</button>
+                    </div>
+                    <div class="question hidden" id="question6">
+                        <label for="T5">Temperature in bathroom (T5):</label>
+                        <input type="text" name="T5" required><br>
+
+                        <label for="RH_5">Humidity in bathroom (RH_5):</label>
+                        <input type="text" name="RH_5" required><br>
+                        <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
+                        <button type="button" id="next-btn" class="next-btn">Next</button>
+                    </div>
+                    <div class="question hidden" id="question7">
+                        <label for="T6">Temperature outside the building (north side) (T6):</label>
+                        <input type="text" name="T6" required><br>
+
+                        <label for="RH_6">Humidity outside the building (north side) (RH_6):</label>
+                        <input type="text" name="RH_6" required><br>
+                        <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
+                        <button type="button" id="next-btn" class="next-btn">Next</button>
+                    </div>
+                    <div class="question hidden" id="question8">
+                        <label for="T7">Temperature in ironing room (T7):</label>
+                        <input type="text" name="T7" required><br>
+
+                        <label for="RH_7">Humidity in ironing room (RH_7):</label>
+                        <input type="text" name="RH_7" required><br>
+                        <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
+                        <button type="button" id="next-btn" class="next-btn">Next</button>
+                    </div>
+                    <div class="question hidden" id="question9">
+                        <label for="T8">Temperature in teenager room 2 (T8):</label>
+                        <input type="text" name="T8" required><br>
+
+                        <label for="RH_8">Humidity in teenager room 2 (RH_8):</label>
+                        <input type="text" name="RH_8" required><br>
+                        <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
+                        <button type="button" id="next-btn" class="next-btn">Next</button>
+                    </div>
+                    <div class="question hidden" id="question10">
+                        <label for="T9">Temperature in parents' room (T9):</label>
+                        <input type="text" name="T9" required><br>
+
+                        <label for="RH_9">Humidity in parents' room (RH_9):</label>
+                        <input type="text" name="RH_9" required><br>
+                        <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
+                        <button type="button" id="next-btn" class="next-btn">Next</button>
+                    </div>
+                    <div class="question hidden" id="question11">
+                        <label for="T_out">Temperature outside (from Chièvres weather station) (T_out):</label>
+                        <input type="text" name="T_out" required><br>
+                        <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
+                        <button type="button" id="next-btn" class="next-btn">Next</button>
+                    </div>
+                    <div class="question hidden" id="question12">
+                        <label for="Press_mm_hg">Pressure (from Chièvres weather station) (Press_mm_hg):</label>
+                        <input type="text" name="Press_mm_hg" required><br>
+                        <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
+                        <button type="button" id="next-btn" class="next-btn">Next</button>
+                    </div>
+                    <div class="question hidden" id="question13">
+                        <label for="RH_out">Humidity outside (from Chièvres weather station) (RH_out):</label>
+                        <input type="text" name="RH_out" required><br>
+                        <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
+                        <button type="button" id="next-btn" class="next-btn">Next</button>
+                    </div>
+                    <div class="question hidden" id="question14">
+                        <label for="Windspeed">Windspeed (from Chièvres weather station) (Windspeed):</label>
+                        <input type="text" name="Windspeed" required><br>
+                        <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
+                        <button type="button" id="next-btn" class="next-btn">Next</button>
+                    </div>
+                    <div class="question hidden" id="question14">
+                        <label for="Visibility">Visibility (from Chièvres weather station) (Visibility):</label>
+                        <input type="text" name="Visibility" required><br>
+                        <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
+                        <button type="button" id="next-btn" class="next-btn">Next</button>
+                    </div>
+                    <div class="question hidden" id="question15">
+                        <label for="Tdewpoint">Dewpoint Temperature (from Chièvres weather station) (Tdewpoint):</label>
+                        <input type="text" name="Tdewpoint" required><br>
+                        <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
+                        <button type="button" id="next-btn" class="next-btn">Next</button>
+                    </div>
+                    
+                    <div class="question hidden" id="question8">
+                        <label for="NSM">NSM Value:</label>
+                        <input type="text" name="NSM" required><br>
+                        <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
+                        <!-- <button type="submit" id="predict-btn" class="hidden">Predict</button> -->
+                    </div>
+                    <button type="submit" id="predict-btn" class="pred-btn" disabled>Predict</button>
+                </form>
+            </div>
+
+            <div class="data-representation">
+                <div id="cube"></div>
+            </div>
+        </div>
+
+        <div id="resultContainer" class="result-container">
+            <?php if(isset($output)) echo "<p>$output</p>"; ?>
+        </div>
+    </main>
+
+    <script src="js/heatload.js"></script>
 </body>
 </html>

@@ -65,7 +65,7 @@ if __name__ == "__main__":
     args = sys.argv[1:]
 
     # Display command-line arguments for debugging
-    print(f"Received arguments: {args}")
+    # print(f"Received arguments: {args}")
 
     # Check if the correct number of arguments is provided
     if len(args) != 26:
