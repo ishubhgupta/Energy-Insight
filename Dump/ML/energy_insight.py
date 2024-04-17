@@ -152,7 +152,7 @@ for i in range(n) :
         temp_room = weather['temperature'] - pred_cool_load[0]
 
 
-    pmp = f"i have a Relative Compactness of {rc}, Surface Area of {sa}, Wall Area of {wa}, Roof Area of {ra}, Overall Height of {ovrh}, Orientation of {orientation}, Glazing Area of {ga}, Glazing Area Distribution of {gad}, Overall Width of {ow}, Perimeter of {peri}. Heating load of {pred_heat_load}.  is this a perfect design according to HVAC engineering, suggest me improvements in the above-mentioned categories, so that the temperature in the room is moderate than outside." #and Cooling load of {pred_cool_load}
+    pmp = f"i have a Relative Compactness of {rc}, Surface Area of {sa}, Wall Area of {wa}, Roof Area of {ra}, Overall Height of {ovrh}, Orientation of {orientation}, Glazing Area of {ga}, Glazing Area Distribution of {gad}, Overall Width of {ow}, Perimeter of {peri}. Cooling load of {pred_cool_load}.  is this a perfect design according to HVAC engineering, suggest me improvements in the above-mentioned categories, so that the temperature in the room is moderate than outside." #and Cooling load of {pred_cool_load}
 
     suggestion(pmp)
 
