@@ -2,6 +2,7 @@ import math
 import random
 import warnings
 warnings.filterwarnings("ignore")
+from joblib import load
 import pandas as pd
 import numpy as np
 from sklearn.ensemble import RandomForestRegressor
@@ -93,26 +94,6 @@ def suggestion(pmp):
     # Print Gemini-Pro's response
     print(f"Gemini-Pro: {response}")
 
-# feature engineering
-
-df = pd.read_csv("Dump\ML\ENB2012_data.csv")
-# new feature
-df['X9'] = (df['X3']/4)/df['X5']
-df['X10'] = 2 * (df['X5'] + df['X9'])
-
-# multiclass data distribution
-
-X = df.drop(columns=['Y1','Y2'])
-y1 = df['Y1']
-y2 = df['Y2']
-X_train, X_test, y_train, y_test = train_test_split(X,y1, test_size = 0.2, random_state = 42)
-clf1 = RandomForestRegressor().fit(X_train, y_train) #heating load
-y_pred_1 = clf1.predict(X_test)
-
-X_train, X_test, y_train, y_test = train_test_split(X,y2, test_size = 0.2, random_state = 42)
-clf2 = RandomForestRegressor().fit(X_train, y_train) # cooling load
-y_pred_2 = clf2.predict(X_test)
-
 # predicting value
 n = 9 # Number of rooms in a building
 outer = []
@@ -142,11 +123,13 @@ for i in range(n) :
     inp = [[rc, sa, wa, ra, ovrh, orientation, ga, gad, ow, peri]]
 
     if(current_season == "Winter"):
+        clf1 = load('heating_load.joblib')
         pred_heat_load = clf1.predict(inp)
         print("The Heating Load is : ",pred_heat_load[0])
         temp_room = weather['temperature'] + pred_heat_load[0]
 
     elif(current_season == "Summer"):
+        clf2 = load('cooling_load.joblib')
         pred_cool_load = clf2.predict(inp)
         print("The Cooling Load is : ",pred_cool_load[0])
         temp_room = weather['temperature'] - pred_cool_load[0]
