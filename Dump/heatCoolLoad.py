@@ -57,13 +57,54 @@
 
 
 
-
 import sys
+import math
+import random
+import warnings
+warnings.filterwarnings("ignore")
+from lightgbm import LGBMRegressor
 import pandas as pd
-import joblib
+import numpy as np
 import datetime
 import requests
+import os
+from dotenv import load_dotenv
+import google.generativeai as gen_ai
+import joblib
+from joblib import load
 
+# Function to start a chat session
+def start_chat(g_model):
+  chat_session = g_model.start_chat(history=[])
+  return chat_session
+
+
+# Function to process user input and get response
+def get_response(user_prompt, chat_session):
+  # Send user's message to Gemini-Pro and get the response
+  gemini_response = chat_session.send_message(user_prompt)
+  return gemini_response.text
+
+
+def suggestion(pmp):
+    load_dotenv()
+
+    GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+
+    # Set up Google Gemini-Pro AI model
+    gen_ai.configure(api_key=GOOGLE_API_KEY)
+    g_model = gen_ai.GenerativeModel('gemini-pro')
+
+    # Initialize chat session
+    chat_session = start_chat(g_model)
+    # Get user input
+    user_prompt = pmp
+
+    # Get response from Gemini-Pro
+    response = get_response(user_prompt, chat_session)
+
+    # Print Gemini-Pro's response
+    print(f"Gemini-Pro: {response}")
 
 
 def get_weather(api_key, city):
@@ -126,12 +167,16 @@ def predict_heat_cool_load(city, X1, X2, X3, X4, X5, X6, X7, X8):
         prediction_heat = clf_heat.predict(new_data_df)
         prediction_cool = clf_cool.predict(new_data_df)
 
+        ow = (X3/4)/X5
+        peri = 2*(X5 + ow)
         if current_season == "Winter":
             prediction_heat += temperature
             print(f"The predicted Heating Load value is: {prediction_heat[0]}")
         elif current_season == "Summer":
             prediction_cool -= temperature
             print(f"The predicted Cooling Load value is: {prediction_cool[0]}")
+            pmp = f"i have a Relative Compactness of {X1}, Surface Area of {X2}, Wall Area of {X3}, Roof Area of {X4}, Overall Height of {X5}, Orientation of {X6}, Glazing Area of {X7}, Glazing Area Distribution of {X8}, Overall Width of {ow}, Perimeter of {peri}. Cooling load of {prediction_cool}.  is this a perfect design according to HVAC engineering, suggest me improvements in the above-mentioned categories, so that the temperature in the room is moderate than outside." #and Cooling load of {pred_cool_load}
+            suggestion(pmp)
 
 
     except Exception as e:
