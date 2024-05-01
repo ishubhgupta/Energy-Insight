@@ -2,6 +2,8 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get user input from the form
+
+    $city = $_POST["City"];
     $X1 = $_POST["X1"];
     $X2 = $_POST["X2"];
     $X3 = $_POST["X3"];
@@ -13,9 +15,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Prepare the command to run the Python script with user inputs
     $command = "python -u D:\\Projects\\Energy-Insight\\Dump\\heatCoolLoad.py";
-    
-    // Append user inputs to the command
-    $command .= " " . escapeshellarg($X1) . " " . escapeshellarg($X2) . " " . escapeshellarg($X3) . " " . escapeshellarg($X4) . " " . escapeshellarg($X5) . " " . escapeshellarg($X6) . " " . escapeshellarg($X7) . " " . escapeshellarg($X8);
+        
+    // Append user inputs to the command, including the city name
+    $command .= " " . escapeshellarg($city) . " " . escapeshellarg($X1) . " " . escapeshellarg($X2) . " " . escapeshellarg($X3) . " " . escapeshellarg($X4) . " " . escapeshellarg($X5) . " " . escapeshellarg($X6) . " " . escapeshellarg($X7) . " " . escapeshellarg($X8);
 
     // Execute the command and capture the output
     $output = shell_exec($command);
@@ -40,6 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="container">
             <div class="form">
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" id="predictionForm">
+
 
                     <div class="question" id="question1">
                         <!-- Info icon -->
@@ -90,6 +93,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="question hidden" id="question8">
                         <label for="X8">X8 Glazing Area Distribution:</label>
                         <input type="number" name="X8" step="0.01" min="0" required>
+                        <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
+                        <button type="button" id="next-btn" class="next-btn">Next</button>
+                        <!-- <button type="submit" id="predict-btn" class="hidden">Predict</button> -->
+                    </div>
+                    <div class="question hidden" id="question9">
+                        <label for="City">Enter Your City</label>
+                        <input type="text" name="City" step="0.01" min="0" required>
                         <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
                         <!-- <button type="submit" id="predict-btn" class="hidden">Predict</button> -->
                     </div>

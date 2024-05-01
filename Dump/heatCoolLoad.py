@@ -1,10 +1,102 @@
+# import sys
+# import pandas as pd
+# import joblib
+
+# def predict_heat_cool_load(X1, X2, X3, X4, X5, X6, X7, X8):
+#     try:
+#         # Convert inputs to appropriate data types
+#         X1 = float(X1)
+#         X2 = float(X2)
+#         X3 = float(X3)
+#         X4 = float(X4)
+#         X5 = float(X5)
+#         X6 = float(X6)
+#         X7 = float(X7)
+#         X8 = float(X8)
+#     except ValueError as e:
+#         print(f"Error converting input values: {e}")
+#         return
+
+#     try:
+#         # Create a dictionary with the user-input data
+#         new_data = {'X1': [X1], 'X2': [X2], 'X3': [X3], 'X4': [X4],
+#                     'X5': [X5], 'X6': [X6], 'X7': [X7], 'X8': [X8]}
+
+#         # Create a DataFrame with the new data
+#         new_data_df = pd.DataFrame(data=new_data)
+
+#         # Load the pre-trained models for heating and cooling
+#         clf_heat = joblib.load(r'D:\Projects\Energy-Insight\Dump\main\heatLoad.joblib')
+#         clf_cool = joblib.load(r'D:\Projects\Energy-Insight\Dump\main\coolLoad.joblib')
+
+#         # Make predictions using the trained models
+#         prediction_heat = clf_heat.predict(new_data_df)
+#         prediction_cool = clf_cool.predict(new_data_df)
+
+#         print(f"The predicted Heating Load value is: {prediction_heat[0]}")
+#         print(f"The predicted Cooling Load value is: {prediction_cool[0]}")
+
+#     except Exception as e:
+#         print(f"Error during prediction: {e}")
+
+# # Check if the script is being run from the command line
+# if __name__ == "__main__":
+#     # Read command-line arguments
+#     args_heat_cool = sys.argv[1:]
+
+    
+#     # print(f"Received arguments: {args_heat_cool}") # Display command-line arguments for debugging
+
+#     # Check if the correct number of arguments is provided
+#     if len(args_heat_cool) != 8:
+#         print("Incorrect number of arguments. Please provide values for all features (X1-X8).")
+#     else:
+#         # Call the predict_heat_cool_load function with the provided arguments
+#         predict_heat_cool_load(*args_heat_cool)
+
+
+
+
+
 import sys
 import pandas as pd
 import joblib
+import datetime
+import requests
 
-def predict_heat_cool_load(X1, X2, X3, X4, X5, X6, X7, X8):
+
+
+def get_weather(api_key, city):
+    url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
+    response = requests.get(url)
+    data = response.json()
+    if response.status_code == 200:
+        weather_data = {
+            "temperature": data["main"]["temp"],
+            "pressure": data["main"]["pressure"],
+            "humidity": data["main"]["humidity"],
+            "windspeed": data["wind"]["speed"],
+            "visibility": data.get("visibility", None)
+        }
+        return weather_data
+    else:
+        print("Error:", data["message"])
+
+api_key = 'ba1b7f5763035389dc83737b7a0e29e5'
+
+def get_season(date):
+    winter_start = datetime.datetime(date.year, 1, 1)
+    winter_end = datetime.datetime(date.year, 4, 1)
+    summer_start = datetime.datetime(date.year, 4, 1)
+    summer_end = datetime.datetime(date.year, 10, 1)
+
+    if (date >= winter_start and date < winter_end) or (date >= summer_start and date < summer_end):
+        return "Winter" if date < winter_end else "Summer"
+    else:
+        return "Neither Winter nor Summer"
+
+def predict_heat_cool_load(city, X1, X2, X3, X4, X5, X6, X7, X8):
     try:
-        # Convert inputs to appropriate data types
         X1 = float(X1)
         X2 = float(X2)
         X3 = float(X3)
@@ -18,38 +110,39 @@ def predict_heat_cool_load(X1, X2, X3, X4, X5, X6, X7, X8):
         return
 
     try:
-        # Create a dictionary with the user-input data
+        weather_data = get_weather(api_key, city)
+        temperature = weather_data["temperature"]
+        date = datetime.datetime.now()
+        current_season = get_season(date)
+
         new_data = {'X1': [X1], 'X2': [X2], 'X3': [X3], 'X4': [X4],
                     'X5': [X5], 'X6': [X6], 'X7': [X7], 'X8': [X8]}
 
-        # Create a DataFrame with the new data
         new_data_df = pd.DataFrame(data=new_data)
 
-        # Load the pre-trained models for heating and cooling
         clf_heat = joblib.load(r'D:\Projects\Energy-Insight\Dump\main\heatLoad.joblib')
         clf_cool = joblib.load(r'D:\Projects\Energy-Insight\Dump\main\coolLoad.joblib')
 
-        # Make predictions using the trained models
         prediction_heat = clf_heat.predict(new_data_df)
         prediction_cool = clf_cool.predict(new_data_df)
 
-        print(f"The predicted Heating Load value is: {prediction_heat[0]}")
-        print(f"The predicted Cooling Load value is: {prediction_cool[0]}")
+        if current_season == "Winter":
+            prediction_heat += temperature
+            print(f"The predicted Heating Load value is: {prediction_heat[0]}")
+        elif current_season == "Summer":
+            prediction_cool -= temperature
+            print(f"The predicted Cooling Load value is: {prediction_cool[0]}")
+
 
     except Exception as e:
         print(f"Error during prediction: {e}")
 
-# Check if the script is being run from the command line
 if __name__ == "__main__":
-    # Read command-line arguments
-    args_heat_cool = sys.argv[1:]
+    args = sys.argv[1:]
 
-    
-    # print(f"Received arguments: {args_heat_cool}") # Display command-line arguments for debugging
-
-    # Check if the correct number of arguments is provided
-    if len(args_heat_cool) != 8:
-        print("Incorrect number of arguments. Please provide values for all features (X1-X8).")
+    if len(args) != 9:
+        print("Incorrect number of arguments. Please provide City, and values for all features (X1-X8).")
     else:
-        # Call the predict_heat_cool_load function with the provided arguments
-        predict_heat_cool_load(*args_heat_cool)
+        city = args[0]
+        X1, X2, X3, X4, X5, X6, X7, X8 = args[1:]
+        predict_heat_cool_load(city, X1, X2, X3, X4, X5, X6, X7, X8)
