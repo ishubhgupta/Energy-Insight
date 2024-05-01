@@ -104,7 +104,7 @@ def suggestion(pmp):
     response = get_response(user_prompt, chat_session)
 
     # Print Gemini-Pro's response
-    print(f"Gemini-Pro: {response}")
+    print(f"Suggestion: {response}")
 
 
 def get_weather(api_key, city):
