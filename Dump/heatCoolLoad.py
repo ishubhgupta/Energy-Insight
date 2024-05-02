@@ -161,8 +161,10 @@ def predict_heat_cool_load(city, X1, X2, X3, X4, X5, X6, X7, X8):
 
         new_data_df = pd.DataFrame(data=new_data)
 
-        clf_heat = joblib.load(r'D:\Projects\Energy-Insight\Dump\main\heatLoad.joblib')
-        clf_cool = joblib.load(r'D:\Projects\Energy-Insight\Dump\main\coolLoad.joblib')
+        # clf_heat = joblib.load(r'D:\Projects\Energy-Insight\Dump\main\heatLoad.joblib')
+        clf_heat = joblib.load('heatLoad.joblib')
+        # clf_cool = joblib.load(r'D:\Projects\Energy-Insight\Dump\main\coolLoad.joblib')
+        clf_cool = joblib.load('coolLoad.joblib')
 
         prediction_heat = clf_heat.predict(new_data_df)
         prediction_cool = clf_cool.predict(new_data_df)
