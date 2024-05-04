@@ -14,7 +14,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $X8 = $_POST["X8"];
 
     // Prepare the command to run the Python script with user inputs
-    $command = "python -u D:\\Projects\\Energy-Insight\\Dump\\heatCoolLoad.py";
+    // $command = "python -u D:\\Projects\\Energy-Insight\\Dump\\heatCoolLoad.py";
+    $command = "python -u heatCoolLoad.py";
         
     // Append user inputs to the command, including the city name
     $command .= " " . escapeshellarg($city) . " " . escapeshellarg($X1) . " " . escapeshellarg($X2) . " " . escapeshellarg($X3) . " " . escapeshellarg($X4) . " " . escapeshellarg($X5) . " " . escapeshellarg($X6) . " " . escapeshellarg($X7) . " " . escapeshellarg($X8);
