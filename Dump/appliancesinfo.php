@@ -9,16 +9,14 @@
 
 </head>
 <body>
-    <div class="container">
         <header class="navbar">
             <div class="left-nav">EnergyInsight</div>
             <nav class="right-nav">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#services">Services</a>
-                <!-- Add more navigation links as needed -->
+                <a href="index.php">Home</a>
             </nav>
         </header>
+    <div class="container">
+
         <header>
             <h1>Appliances Model Information</h1>
         </header>

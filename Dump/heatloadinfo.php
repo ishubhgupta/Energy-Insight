@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Heat Load Information</title>
-    <link rel="stylesheet" href="css/heatloadinfo.css">
+    <link rel="stylesheet" href="css/appliancesinfo.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* Smooth scrolling */
@@ -14,6 +14,12 @@
     </style>
 </head>
 <body>
+    <header class="navbar">
+        <div class="left-nav">EnergyInsight</div>
+        <nav class="right-nav">
+            <a href="index.php">Home</a>
+        </nav>
+    </header>
     <div class="container">
         <header>
             <h1>Heat Load Information</h1>
@@ -21,15 +27,21 @@
         
         <section>
             <div class="intro-container">
-                <p class="intro">Before filling out the form, let's understand how this predictive model can revolutionize the way you approach building design and energy consumption:</p>
-                <p>Our advanced predictive model leverages machine learning algorithms to accurately estimate the heating and cooling loads of buildings based on their architectural features. By analyzing key parameters such as relative compactness, surface area, wall area, roof area, overall height, orientation, glazing area, and glazing area distribution, the model provides invaluable insights into a building's energy performance.</p>
-                <p>By harnessing the power of data-driven predictions, architects, engineers, and building professionals can:</p>
-                <ul class="benefits-list">
-                    <li>Design more sustainable and energy-efficient buildings from the ground up</li>
-                    <li>Optimize the sizing and placement of heating, ventilation, and air conditioning (HVAC) systems</li>
-                    <li>Reduce energy costs and environmental impact</li>
-                    <li>Improve occupant comfort and well-being</li>
-                </ul>
+                <div class="intro-content">
+                    <p class="intro">Before filling out the form, let's understand how this predictive model can revolutionize the way you approach building design and energy consumption:</p>
+                    <p>Our advanced predictive model leverages machine learning algorithms to accurately estimate the heating and cooling loads of buildings based on their architectural features. By analyzing key parameters such as relative compactness, surface area, wall area, roof area, overall height, orientation, glazing area, and glazing area distribution, the model provides invaluable insights into a building's energy performance.</p>
+                    <p>By harnessing the power of data-driven predictions, architects, engineers, and building professionals can:</p>
+                    <ul class="benefits-list">
+                        <li>Design more sustainable and energy-efficient buildings from the ground up</li>
+                        <li>Optimize the sizing and placement of heating, ventilation, and air conditioning (HVAC) systems</li>
+                        <li>Reduce energy costs and environmental impact</li>
+                        <li>Improve occupant comfort and well-being</li>
+                    </ul>
+                </div>
+
+                <div class="intro-image-div">
+                    <img class="intro-image"src="asset/pexels-bakr-magrabi-3385615.jpg" alt="Image">
+                </div>
                 <!-- Button to scroll to Prediction Info -->
                 <a href="#prediction-info" class="scroll-btn">Learn More</a>
             </div>
