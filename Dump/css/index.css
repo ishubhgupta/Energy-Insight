@@ -3,6 +3,9 @@
     margin: 0;
     padding: 0;
 }
+html{
+    scroll-behavior: smooth;
+}
 
 body {
     color: #ffffff;
@@ -158,6 +161,23 @@ nav.right-nav a {
 .links:nth-child(3) {
     justify-self: center;
 }
+
+/* intro */
+
+.intro{
+    height: 100vh;
+    color: black;
+}
+
+.goal{
+    height: 100vh;
+    background-color: #182527;
+}
+
+
+
+
+
 
 
 /* contact */

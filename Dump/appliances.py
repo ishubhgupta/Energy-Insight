@@ -1,7 +1,54 @@
 import sys
+import math
+import random
+import warnings
+warnings.filterwarnings("ignore")
+from lightgbm import LGBMRegressor
 import pandas as pd
+import numpy as np
+import datetime
+import requests
+import os
+from dotenv import load_dotenv
+import google.generativeai as gen_ai
 import joblib
+from joblib import load
 from sklearn.linear_model import SGDRegressor
+
+
+# Function to start a chat session
+def start_chat(g_model):
+  chat_session = g_model.start_chat(history=[])
+  return chat_session
+
+
+# Function to process user input and get response
+def get_response(user_prompt, chat_session):
+  # Send user's message to Gemini-Pro and get the response
+  gemini_response = chat_session.send_message(user_prompt)
+  return gemini_response.text
+
+
+def suggestion(pmp):
+    load_dotenv()
+
+    GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+
+    # Set up Google Gemini-Pro AI model
+    gen_ai.configure(api_key=GOOGLE_API_KEY)
+    g_model = gen_ai.GenerativeModel('gemini-pro')
+
+    # Initialize chat session
+    chat_session = start_chat(g_model)
+    # Get user input
+    user_prompt = pmp
+
+    # Get response from Gemini-Pro
+    response = get_response(user_prompt, chat_session)
+
+    # Print Gemini-Pro's response
+    print(f"Suggestion: {response}")
+
 
 def predict_appliances(lights, T1, RH_1, T2, RH_2, T3, RH_3, T4, RH_4, T5, RH_5, T6, RH_6, T7, RH_7, T8, RH_8, T9, RH_9, T_out, Press_mm_hg, RH_out, Windspeed, Visibility, Tdewpoint, NSM):
     try:
@@ -55,7 +102,8 @@ def predict_appliances(lights, T1, RH_1, T2, RH_2, T3, RH_3, T4, RH_4, T5, RH_5,
         prediction = clf.predict(new_data_df)
 
         print(f"The predicted Appliances value is: {prediction[0]}")
-
+        # pmp = f"i have a Relative Compactness of {X1}, Surface Area of {X2}, Wall Area of {X3}, Roof Area of {X4}, Overall Height of {X5}, Orientation of {X6}, Glazing Area of {X7}, Glazing Area Distribution of {X8}, Overall Width of {ow}, Perimeter of {peri}. Cooling load of {prediction_cool}.  is this a perfect design according to HVAC engineering, suggest me improvements in the above-mentioned categories, so that the temperature in the room is moderate than outside." #and Cooling load of {pred_cool_load}
+        # suggestion(pmp)
     except Exception as e:
         print(f"Error during prediction: {e}")
 

@@ -40,14 +40,30 @@
         <div class="quick-links">
             <a href="#intro" class="links">Quick Introduction</a>
             <a href="#goal" class="links">Goal</a>
-            <a href="#progress" class="links">Progress</a>
-            <a href="#visualization" class="links">Data Visualization</a>
-            <a href="#model1" class="links">Model1</a>
-            <a href="#model2" class="links">Model2</a>
+
+
+            <a href="appliancesinfo.php" class="links">Appliances</a>
+            <a href="heatloadinfo.php" class="links">Heat & Cool Load</a>
+            <a href="#contact" class="links">Contact</a>
+        </div>
+    </div>
+    <div class="intro" id="Intro">
+        <span class="ql-heading">About Us</span>
+
+        <div class="about-us">
+            
         </div>
     </div>
 
-    <div class="contact">
+    <div class="goal" id="goal">
+        <span class="ql-heading">Our Goal</span>
+
+        <div class="our-goal">
+            
+        </div>
+    </div>
+
+    <div class="contact" id="contact">
         <span class="contact-heading">Contact Details</span>
         <div class="contact-animation">
 
