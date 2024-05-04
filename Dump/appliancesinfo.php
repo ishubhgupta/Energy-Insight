@@ -10,28 +10,50 @@
 </head>
 <body>
     <div class="container">
+        <header class="navbar">
+            <div class="left-nav">EnergyInsight</div>
+            <nav class="right-nav">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <!-- Add more navigation links as needed -->
+            </nav>
+        </header>
         <header>
             <h1>Appliances Model Information</h1>
         </header>
         
         <section>
             <div class="intro-container">
-                <p class="intro">Before filling out the form, let's understand how this predictive model can revolutionize the way you approach energy consumption:</p>
-                <p>Our advanced predictive model leverages machine learning algorithms to accurately estimate the energy usage of appliances in buildings based on various environmental and operational factors. By analyzing key parameters such as temperature, humidity, and weather conditions, the model provides invaluable insights into optimizing energy consumption.</p>
-                <p>By harnessing the power of data-driven predictions, architects, engineers, and building professionals can:</p>
-                <ul class="benefits-list">
-                    <li>Design more energy-efficient buildings by optimizing appliance usage</li>
-                    <li>Identify opportunities for energy savings and cost reduction</li>
-                    <li>Improve sustainability and reduce environmental impact</li>
-                    <li>Enhance occupant comfort and well-being</li>
-                </ul>
+                <div class="intro-content">
+                    <p class="intro">Before Predicting, look about the feature and Prediction Model makes</p>
+                    <p>Our advanced predictive model leverages machine learning algorithms to accurately estimate the energy usage of appliances in buildings based on various environmental and operational factors. By analyzing key parameters such as temperature, humidity, and weather conditions, the model provides invaluable insights into optimizing energy consumption.</p>
+                    <br>
+                    <p>By harnessing the power of data-driven predictions, architects, engineers, and building professionals can:</p>
+                    <ul class="benefits-list">
+                        <li>Design more energy-efficient buildings by optimizing appliance usage</li>
+                        <li>Identify opportunities for energy savings and cost reduction</li>
+                        <li>Improve sustainability and reduce environmental impact</li>
+                        <li>Enhance occupant comfort and well-being</li>
+                    </ul>
+                </div>
+                <div class="intro-image-div">
+                    <img class="intro-image"src="asset/pexels-bakr-magrabi-3385615.jpg" alt="Image">
+                </div>
+                
                 <!-- Button to scroll to Prediction Info -->
                 <a href="#prediction-info" class="scroll-btn">Learn More</a>
             </div>
             
             <div class="prediction-info-container" id="prediction-info">
                 <h2>Predictions:</h2>
-                <p class="prediction-info">The model estimates the energy usage of appliances in buildings. This includes the energy consumed by various appliances such as lights, kitchen appliances, electronics, etc. Understanding these predictions can help optimize energy usage and reduce overall consumption.</p>
+                <div class="prediction-content">
+                    <p class="prediction-info">The model estimates the energy usage of appliances in buildings. This includes the energy consumed by various appliances such as lights, kitchen appliances, electronics, etc. Understanding these predictions can help optimize energy usage and reduce overall consumption.</p>
+                    <img class="prediction-image"src="asset/pexels-bakr-magrabi-3385615.jpg" alt="Image">
+                </div>
+                <div class="prediction-image">
+                    
+                </div>
                 <!-- Button to scroll to Features -->
                 <a href="#features" class="scroll-btn">Explore Features</a>
             </div>
