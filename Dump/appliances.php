@@ -64,6 +64,7 @@ $output = shell_exec($command);
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" id="predictionForm">
 
                     <div class="question" id="question1">
+                        <div class="info-icon material-icons" title="">info</div>
                         <label for="lights">Lights:</label>
                         <input type="text" name="lights" step="0.01" min="0" required><br>
                         <button type="button" id="next-btn" class="next-btn">Next</button>
@@ -156,37 +157,37 @@ $output = shell_exec($command);
                         <button type="button" id="next-btn" class="next-btn">Next</button>
                     </div>
                     <div class="question hidden" id="question11">
-                        <label for="T_out">Temperature outside (from Chièvres weather station) (T_out):</label>
+                        <label for="T_out">Temperature outside (T_out):</label>
                         <input type="text" name="T_out" required><br>
                         <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
                         <button type="button" id="next-btn" class="next-btn">Next</button>
                     </div>
                     <div class="question hidden" id="question12">
-                        <label for="Press_mm_hg">Pressure (from Chièvres weather station) (Press_mm_hg):</label>
+                        <label for="Press_mm_hg">Pressure (Press_mm_hg):</label>
                         <input type="text" name="Press_mm_hg" required><br>
                         <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
                         <button type="button" id="next-btn" class="next-btn">Next</button>
                     </div>
                     <div class="question hidden" id="question13">
-                        <label for="RH_out">Humidity outside (from Chièvres weather station) (RH_out):</label>
+                        <label for="RH_out">Humidity outside (RH_out):</label>
                         <input type="text" name="RH_out" required><br>
                         <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
                         <button type="button" id="next-btn" class="next-btn">Next</button>
                     </div>
                     <div class="question hidden" id="question14">
-                        <label for="Windspeed">Windspeed (from Chièvres weather station) (Windspeed):</label>
+                        <label for="Windspeed">Windspeed  (Windspeed):</label>
                         <input type="text" name="Windspeed" required><br>
                         <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
                         <button type="button" id="next-btn" class="next-btn">Next</button>
                     </div>
                     <div class="question hidden" id="question14">
-                        <label for="Visibility">Visibility (from Chièvres weather station) (Visibility):</label>
+                        <label for="Visibility">Visibility (Visibility):</label>
                         <input type="text" name="Visibility" required><br>
                         <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
                         <button type="button" id="next-btn" class="next-btn">Next</button>
                     </div>
                     <div class="question hidden" id="question15">
-                        <label for="Tdewpoint">Dewpoint Temperature (from Chièvres weather station) (Tdewpoint):</label>
+                        <label for="Tdewpoint">Dewpoint Temperature (Tdewpoint):</label>
                         <input type="text" name="Tdewpoint" required><br>
                         <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
                         <button type="button" id="next-btn" class="next-btn">Next</button>

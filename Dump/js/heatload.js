@@ -8,23 +8,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Image URLs corresponding to each question
     const imageUrls = [
-        "url(https://th.bing.com/th/id/OIP.r6ZlFGWZmzdrK5xxzjgrAgHaE8?rs=1&pid=ImgDetMain)",
-        "url(https://th.bing.com/th/id/OIP.r6ZlFGWZmzdrK5xxzjgrAgHaE8?rs=1&pid=ImgDetMain)",
-        "url(https://th.bing.com/th/id/OIP.r6ZlFGWZmzdrK5xxzjgrAgHaE8?rs=1&pid=ImgDetMain)",
-        "url(https://th.bing.com/th/id/OIP.r6ZlFGWZmzdrK5xxzjgrAgHaE8?rs=1&pid=ImgDetMain)",
-        "url(https://th.bing.com/th/id/OIP.r6ZlFGWZmzdrK5xxzjgrAgHaE8?rs=1&pid=ImgDetMain)",
-        "url(https://th.bing.com/th/id/OIP.r6ZlFGWZmzdrK5xxzjgrAgHaE8?rs=1&pid=ImgDetMain)",
-        "url(https://th.bing.com/th/id/OIP.r6ZlFGWZmzdrK5xxzjgrAgHaE8?rs=1&pid=ImgDetMain)",
-        "url(https://th.bing.com/th/id/OIP.r6ZlFGWZmzdrK5xxzjgrAgHaE8?rs=1&pid=ImgDetMain)",
-        "url(https://th.bing.com/th/id/OIP.r6ZlFGWZmzdrK5xxzjgrAgHaE8?rs=1&pid=ImgDetMain)",
-        "url(https://th.bing.com/th/id/OIP.r6ZlFGWZmzdrK5xxzjgrAgHaE8?rs=1&pid=ImgDetMain)",
-        "url(https://th.bing.com/th/id/OIP.r6ZlFGWZmzdrK5xxzjgrAgHaE8?rs=1&pid=ImgDetMain)",
-        // "D:/Projects/Energy-Insight/Dump/asset/pexels-bakr-magrabi-3385615.jpg",
-    
-        "url(D:/Projects/Energy-Insight/Dump/asset/pexels-bakr-magrabi-3385615.jpg)"
+        "url(https://www.pexels.com/photo/s-curve-chicago-22858523/700x708)",
+        "url(https://via.placeholder.com/1920x1080)",
+        "url(https://via.placeholder.com/1920x1080)"
+        // Add more image URLs for each question as needed
     ];
 
-    // Show next question and update background image
+    // Show next question
     function showNextQuestion() {
         questions[currentQuestionIndex].classList.add("hidden");
         currentQuestionIndex++;
@@ -43,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
         document.body.style.backgroundImage = imageUrls[currentQuestionIndex];
     }
 
-    // Show previous question and hide current one
+    // Show previous question
     function showPrevQuestion() {
         questions[currentQuestionIndex].classList.add("hidden");
         currentQuestionIndex--;
@@ -61,12 +51,12 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // Event listeners for next button clicks
-    nextBtns.forEach((btn, index) => {
+    nextBtns.forEach(btn => {
         btn.addEventListener("click", showNextQuestion);
     });
 
     // Event listener for previous button click
-    prevBtns.forEach((btn, index) => {
+    prevBtns.forEach(btn => {
         btn.addEventListener("click", showPrevQuestion);
     });
 
@@ -78,4 +68,7 @@ document.addEventListener("DOMContentLoaded", function() {
             predictBtn.disabled = !allFilled;
         });
     });
+
+    // Set initial background image
+    document.body.style.backgroundImage = imageUrls[currentQuestionIndex];
 });
