@@ -6,14 +6,30 @@ document.addEventListener("DOMContentLoaded", function() {
 
     let currentQuestionIndex = 0;
 
-    // Image URLs corresponding to each question
-    const imageUrls = [
-        "url(https://www.pexels.com/photo/s-curve-chicago-22858523/700x708)",
-        "url(https://via.placeholder.com/1920x1080)",
-        "url(https://via.placeholder.com/1920x1080)"
-        // Add more image URLs for each question as needed
+    // Colors corresponding to each question
+    const colors = [
+        "#ffcccc",
+        "#ccffcc",
+        "#ccccff",
+        "#ffccff",
+        "#ffffcc",
+        "#ccffff",
+        "#ff99cc",
+        "#99ffcc",
+        "#cc99ff",
+        "#ffcc99",
+        "#99ccff",
+        "#ccff99",
+        "#ff6666",
+        "#66ff66",
+        "#6666ff",
+        "#ff9966",
+        "#66ff99",
+        "#9966ff",
+        "#ff66cc"
+        // Add more colors for each question as needed
     ];
-
+    
     // Show next question
     function showNextQuestion() {
         questions[currentQuestionIndex].classList.add("hidden");
@@ -29,8 +45,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
         prevBtns[currentQuestionIndex].classList.remove("hidden");
 
-        // Update background image based on current question index
-        document.body.style.backgroundImage = imageUrls[currentQuestionIndex];
+        // Update background color based on current question index
+        document.body.style.backgroundColor = colors[currentQuestionIndex];
     }
 
     // Show previous question
@@ -46,8 +62,8 @@ document.addEventListener("DOMContentLoaded", function() {
         predictBtn.classList.add("hidden");
         nextBtns[currentQuestionIndex].classList.remove("hidden");
 
-        // Update background image based on current question index
-        document.body.style.backgroundImage = imageUrls[currentQuestionIndex];
+        // Update background color based on current question index
+        document.body.style.backgroundColor = colors[currentQuestionIndex];
     }
 
     // Event listeners for next button clicks
@@ -69,6 +85,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // Set initial background image
-    document.body.style.backgroundImage = imageUrls[currentQuestionIndex];
+    // Set initial background color
+    document.body.style.backgroundColor = colors[currentQuestionIndex];
 });
