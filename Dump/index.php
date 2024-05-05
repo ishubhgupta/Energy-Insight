@@ -65,15 +65,19 @@
 
     <div class="contact" id="contact">
         <span class="contact-heading">Contact Details</span>
-        <div class="contact-animation">
+        <div class="contact-content">
+            <div>
+                <img class="contact-image" src="asset/contact-index.jpg" alt="contact image" srcset="">
+            </div>
+            <div class="contact-options">
+                
+                <span class="items">87379767XX</span>
+                <span class="items">VIT Bhopal University</span>
+                <span class="items">EnergyInsight@gmail.com</span>
+                <span class="items">EnergyInsight.com</span>
+            </div>
+        </div>
 
-        </div>
-        <div class="contact-options">
-            <span class="items">87379767XX</span>
-            <span class="items">VIT Bhopal University</span>
-            <span class="items">EnergyInsight@gmail.com</span>
-            <span class="items">EnergyInsight.com</span>
-        </div>
     </div>
   
 </body>
