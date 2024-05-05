@@ -49,49 +49,56 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     <div class="question" id="question1">
                         <!-- Info icon -->
-                        <div class="info-icon material-icons" title="Definition for X1">info</div>
+                        <div class="info-icon material-icons" title="Indicates how compact the building is relative to its footprint. Please provide a value between 0.0 and 1.0.">info</div>
                         <label for="X1">X1 Relative Compactness:</label>
                         <input type="number" name="X1" step="0.01" min="0" required>
                         <button type="button" class="next-btn">Next</button>
                     </div>
                     
                     <div class="question hidden" id="question2">
+                        <div class="info-icon material-icons" title="Total surface area of the building envelope (in square meters)">info</div>
                         <label for="X2">X2 Surface Area:</label>
                         <input type="number" name="X2" step="0.02" min="0" required>
                         <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
                         <button type="button" id="next-btn" class="next-btn">Next</button>
                     </div>
                     <div class="question hidden" id="question3">
+                        <div class="info-icon material-icons" title="Total area of the external walls of the building (in square meters).">info</div>
                         <label for="X3">X3 Wall Area:</label>
                         <input type="number" name="X3" step="0.01" min="0" required>
                         <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
                         <button type="button" id="next-btn" class="next-btn">Next</button>
                     </div>
                     <div class="question hidden" id="question4">
+                        <div class="info-icon material-icons" title="Total area of the roof of the building (in square meters).">info</div>
                         <label for="X4">X4 Roof Area:</label>
                         <input type="number" name="X4" step="0.01" min="0" required>
                         <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
                         <button type="button" id="next-btn" class="next-btn">Next</button>
                     </div>
                     <div class="question hidden" id="question5">
+                        <div class="info-icon material-icons" title=" Height of the building from the ground to the roof (in meters)">info</div>
                         <label for="X5">X5 Overall Height:</label>
                         <input type="number" name="X5" step="0.01" min="0" required>
                         <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
                         <button type="button" id="next-btn" class="next-btn">Next</button>
                     </div>
                     <div class="question hidden" id="question6">
+                        <div class="info-icon material-icons" title="Direction the building faces relative to the north direction (in degrees, between 0 and 360).">info</div>
                         <label for="X6">X6 Orientation:</label>
                         <input type="number" name="X6" step="0.01" min="0" required>
                         <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
                         <button type="button" id="next-btn" class="next-btn">Next</button>
                     </div>
                     <div class="question hidden" id="question7">
+                        <div class="info-icon material-icons" title="Total area of windows (glazing) in the building (in square meters).">info</div>
                         <label for="X7">X7 Glazing Area:</label>
                         <input type="number" name="X7" step="0.01" min="0" required>
                         <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
                         <button type="button" id="next-btn" class="next-btn">Next</button>
                     </div>
                     <div class="question hidden" id="question8">
+                        <div class="info-icon material-icons" title=" How the glazing area is distributed among different sides of the building. Please provide a value of 0 for uniform distribution or 1 for non-uniform distribution.">info</div>
                         <label for="X8">X8 Glazing Area Distribution:</label>
                         <input type="number" name="X8" step="0.01" min="0" required>
                         <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
