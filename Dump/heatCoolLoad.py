@@ -81,9 +81,13 @@ def start_chat(g_model):
 
 # Function to process user input and get response
 def get_response(user_prompt, chat_session):
-  # Send user's message to Gemini-Pro and get the response
-  gemini_response = chat_session.send_message(user_prompt)
-  return gemini_response.text
+    # Send user's message to Gemini-Pro and get the response
+    gemini_response = chat_session.send_message(user_prompt)
+    
+    # Ensure the response text is properly encoded using utf-8
+    response_text = gemini_response.text.encode('utf-8', errors='ignore').decode('utf-8')
+    
+    return response_text
 
 
 def suggestion(pmp):
@@ -104,7 +108,7 @@ def suggestion(pmp):
     response = get_response(user_prompt, chat_session)
 
     # Print Gemini-Pro's response
-    print(f"Suggestion: {response}")
+    print(f"\nSuggestion: {response}")
 
 
 def get_weather(api_key, city):

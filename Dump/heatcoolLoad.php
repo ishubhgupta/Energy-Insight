@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="container">
             <div class="form">
                 <!-- <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" id="predictionForm"> -->
-                <form action="results.php" method="post" id="predictionForm">
+                <form action="results_hcl.php" method="post" id="predictionForm">
 
 
 
@@ -60,8 +60,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <input type="number" name="X2" step="0.02" min="0" required>
                         <button type="button" id="prev-btn" class="prev-btn hidden">Previous</button>
                         <button type="button" id="next-btn" class="next-btn">Next</button>
-
-
                     </div>
                     <div class="question hidden" id="question3">
                         <label for="X3">X3 Wall Area:</label>
