@@ -61,7 +61,7 @@ $output = shell_exec($command);
     <main>
         <div class="container">
             <div class="form">
-                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" id="predictionForm">
+                <form action="result_a.php" method="post" id="predictionForm">
 
                     <div class="question" id="question1">
                         <div class="info-icon material-icons" title="">info</div>
