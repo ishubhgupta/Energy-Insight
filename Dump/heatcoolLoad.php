@@ -42,7 +42,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <main>
         <div class="container">
             <div class="form">
-                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" id="predictionForm">
+                <!-- <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" id="predictionForm"> -->
+                <form action="results.php" method="post" id="predictionForm">
+
 
 
                     <div class="question" id="question1">
