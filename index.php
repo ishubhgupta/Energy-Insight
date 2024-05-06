@@ -53,7 +53,7 @@
         
         <div class="about-us">
             <p>Heating and cooling loads significantly impact the energy efficiency of buildings, presenting a critical challenge in sustainable construction and operation. Addressing the optimal management of these loads is essential to minimize energy consumption, reduce greenhouse gas emissions, and enhance overall building performance.</p>
-            <img src="asset\contact-index.jpg" alt="">
+            <img src="asset\load-calculation-factors-cooling-2.jpg" alt="">
         </div>
     </div>
 

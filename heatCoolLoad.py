@@ -108,6 +108,7 @@ def suggestion(pmp):
     response = get_response(user_prompt, chat_session)
 
     # Print Gemini-Pro's response
+    print('\n')
     print(f"\nSuggestion: {response}")
 
 

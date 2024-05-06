@@ -40,7 +40,7 @@
                 </div>
 
                 <div class="intro-image-div">
-                    <img class="intro-image"src="asset/pexels-bakr-magrabi-3385615.jpg" alt="Image">
+                    <img class="intro-image"src="asset/common-hvac-questions-2.jpg" alt="Image">
                 </div>
                 <!-- Button to scroll to Prediction Info -->
                 <a href="#prediction-info" class="scroll-btn">Learn More</a>
@@ -50,6 +50,9 @@
                 <h2>Predictions:</h2>
                 <p class="prediction-info">The model estimates the heating load and cooling load of buildings. Heating load refers to the amount of heat energy required to maintain a comfortable indoor temperature during cold weather, while cooling load represents the amount of heat that must be removed to keep the indoor temperature comfortable during hot weather.</p>
                 <!-- Button to scroll to Features -->
+                <div class="pre-image-div">
+                    <img class="prediction-image"src="asset/heatloadimage.png" alt="Image">
+                </div>
                 <a href="#features" class="scroll-btn">Explore Features</a>
             </div>
             
